@@ -6,18 +6,18 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
-import com.hans.dao.UserDao;
-import com.hans.model.User;
+import com.hans.dao.LogDao;
+import com.hans.model.Log;
 
-@Component("userDao")
-public class UserDaoImpl implements UserDao {
+@Component("logDao")
+public class LogDaoImpl implements LogDao {
 
 	private SessionFactory sessionFactory;
 
 	@Override
-	public int save(User user) {
+	public int save(Log log) {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(user);
+		session.save(log);
 		return 0;
 	}
 
