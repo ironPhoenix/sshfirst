@@ -2,8 +2,7 @@ package com.hans.dao.impl;
 
 import javax.annotation.Resource;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import com.hans.dao.LogDao;
@@ -12,22 +11,22 @@ import com.hans.model.Log;
 @Component("logDao")
 public class LogDaoImpl implements LogDao {
 
-	private SessionFactory sessionFactory;
+	private HibernateTemplate hibernateTemplate;
 
 	@Override
 	public int save(Log log) {
-		Session session = sessionFactory.getCurrentSession();
-		session.save(log);
+
+		hibernateTemplate.save(log);
 		return 0;
 	}
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
 	}
 
 	@Resource
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
 
 }

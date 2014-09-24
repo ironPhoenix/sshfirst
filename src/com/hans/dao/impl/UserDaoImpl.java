@@ -2,8 +2,7 @@ package com.hans.dao.impl;
 
 import javax.annotation.Resource;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import com.hans.dao.UserDao;
@@ -12,22 +11,21 @@ import com.hans.model.User;
 @Component("userDao")
 public class UserDaoImpl implements UserDao {
 
-	private SessionFactory sessionFactory;
+	private HibernateTemplate hibernateTemplate;
 
 	@Override
 	public int save(User user) {
-		Session session = sessionFactory.getCurrentSession();
-		session.save(user);
+		hibernateTemplate.save(user);
 		return 0;
 	}
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
 	}
 
 	@Resource
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
 
 }

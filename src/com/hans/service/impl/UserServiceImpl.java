@@ -3,7 +3,6 @@ package com.hans.service.impl;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.hans.dao.LogDao;
 import com.hans.dao.UserDao;
