@@ -1,31 +1,18 @@
 package com.hans.dao.impl;
 
-import javax.annotation.Resource;
-
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
+import com.hans.dao.SuperDao;
 import com.hans.dao.UserDao;
 import com.hans.model.User;
 
 @Component("userDao")
-public class UserDaoImpl implements UserDao {
-
-	private HibernateTemplate hibernateTemplate;
+public class UserDaoImpl extends SuperDao implements UserDao {
 
 	@Override
 	public int save(User user) {
-		hibernateTemplate.save(user);
+		this.getHibernateTemplate().save(user);
 		return 0;
-	}
-
-	public HibernateTemplate getHibernateTemplate() {
-		return hibernateTemplate;
-	}
-
-	@Resource
-	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
-		this.hibernateTemplate = hibernateTemplate;
 	}
 
 }
